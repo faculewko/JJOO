@@ -9,8 +9,18 @@ public class Deporte
     public string Sinopsis { get; set; }
     public string ImagenSerie { get; set; }
 
-    public Deporte()
-    {
-        
-    }
+    
+}
+public class Deportista
+{
+    public string Nombre { get; set; }
+    public string Apellido { get; set; }
+    public DateOnly FechaNacimiento { get; set; }
+
+}
+
+public class Pais
+{
+    public string Nombre { get; set; }
+    public string bandera { get; set; }
 }
