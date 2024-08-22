@@ -18,4 +18,9 @@ public class HomeController : Controller
     {
         return View();
     }
+    private static Deporte deporte;
+    public IActionResult Deportes()
+    {
+        return view();
+    }
 }
