@@ -18,8 +18,46 @@ public class HomeController : Controller
     {
         return View();
     }
-    private static Deporte deporte;
+   
     public IActionResult Deportes()
+    {
+        viewBag.Deporte=BD.ListarDeportes();
+        return view();
+    }
+    
+    public IActionResult Paises()
+    {
+        viewBag.Pais=BD.ListarPaises();
+        return view();
+    }
+    public IActionResult VerDetalleDeporte()
+    {
+        viewBag.Deporte=BD.VerInfoDeporte(id_deporte);
+        return view();
+    }
+    public IActionResult VerDetallePais()
+    {
+        viewBag.Pais=BD.VerInfoPais();
+        return view();
+    }
+    public IActionResult VerDetalleDeportista()
+    {
+        
+        return view();
+    }
+    public IActionResult AgregarDeportista()
+    {
+        return view();
+    }
+    public IActionResult GuardarDeportista()
+    {
+        return view();
+    }
+    public IActionResult EliminarDeportista()
+    {
+        return view();
+    }
+    public IActionResult Creditos()
     {
         return view();
     }

@@ -25,7 +25,7 @@ public static class BD
         return RegistrosEliminados;
     
     }
-    static public Deporte VerInfoDeporte(int idDeporte)
+    static public Deporte VerInfoDeporte(int id_deporte)
     {
         Deporte deporte=null;
         using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -36,7 +36,7 @@ public static class BD
 
 
     }
-    static public Pais VerInfoPais(int Pais)
+    static public Pais VerInfoPais(int idPais)
     {
         Deporte pais=null;
         using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -63,15 +63,25 @@ public static class BD
         }
         return _ListarPaises;
     }
-    static public List<Deportista> ListarDeportistaxDeporte(int idDeporte)
+    static public List<Deportista> ListarDeportistaxDeporte(int id_deporte)
     {
-
-    }
+        using(SqlConnection db = new SqlConnection(_connectionString) )
+        {
+            string sql = "SELECT * FROM Deportista INNER JOIN Deporte ON Deportista.id_deporte = Deporte.id_deporte WHERE id_deporte = @id_deporte";
+            _ListarDeportistaxDeporte = db.Query<Deportista>(sql).ToList();
+        }
+        return _ListarDeportistaxDeporte;
+    }   
     static public List<Deportista> ListarDeportistaxPais(int idPais)
     {
-
+        using(SqlConnection db = new SqlConnection(_connectionString) )
+        {
+            string sql = "SELECT * FROM Deportista INNER JOIN Pais ON Deportista.idPais = Pais.idPais WHERE idPais = @idPais";
+            _ListarDeportistaxPais = db.Query<Deportista>(sql).ToList();
+        }
+        return _ListarDeportistaxPais;
     }
-    static public List<Deporte> ListarDeportes(int idDeporte)
+    static public List<Deporte> ListarDeportes()
     {
         using(SqlConnection db = new SqlConnection(_connectionString) )
         {
